@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital MOS™ — Find Your Income Lane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@500;600;700&family=Lato:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --charcoal: #2E2E2E;
+    --cream: #F5EFE6;
+    --rose-gold: #C9866B;
+    --gold: #D4AF72;
+    --paper: #FBF8F2;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: 'Lato', sans-serif;
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px;
+    min-height: 100vh;
+  }
+
+  .dossier {
+    width: 100%;
+    max-width: 560px;
+    background: var(--paper);
+    border: 1px solid rgba(26,26,26,0.15);
+    box-shadow: 0 1px 0 rgba(26,26,26,0.05), 0 20px 40px -24px rgba(26,26,26,0.25);
+    position: relative;
+  }
+
+  .dossier::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(201,134,107,0.35);
+    pointer-events: none;
+  }
+
+  header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px dashed rgba(26,26,26,0.25);
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rose-gold);
+    font-weight: 700;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 6px 0 4px;
+    letter-spacing: 0.01em;
+  }
+
+  .subhead {
+    font-size: 13.5px;
+    color: var(--charcoal);
+    opacity: 0.75;
+    max-width: 380px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .compass {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 10px;
+    display: block;
+  }
+
+  #log {
+    padding: 24px 24px 8px;
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .bubble {
+    font-size: 14.5px;
+    line-height: 1.55;
+    padding: 12px 16px;
+    max-width: 88%;
+    white-space: pre-wrap;
+  }
+
+  .bot {
+    align-self: flex-start;
+    background: transparent;
+    border-left: 2px solid var(--rose-gold);
+    padding-left: 14px;
+    color: var(--ink);
+  }
+
+  .user {
+    align-self: flex-end;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 2px;
+  }
+
+  .assignment {
+    align-self: stretch;
+    border: 1px solid var(--gold);
+    background: rgba(212,175,114,0.08);
+    padding: 16px 18px;
+    position: relative;
+  }
+
+  .assignment::before {
+    content: "ORDERS ISSUED";
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--rose-gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .typing {
+    align-self: flex-start;
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    font-style: italic;
+    padding-left: 14px;
+  }
+
+  form {
+    display: flex;
+    gap: 8px;
+    padding: 18px 24px 26px;
+    border-top: 1px dashed rgba(26,26,26,0.25);
+  }
+
+  input[type="text"] {
+    flex: 1;
+    border: 1px solid rgba(26,26,26,0.25);
+    background: #fff;
+    padding: 12px 14px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  input[type="text"]:focus {
+    outline: 2px solid var(--rose-gold);
+    outline-offset: 1px;
+  }
+
+  button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  button:hover { background: var(--rose-gold); }
+  button:disabled { opacity: 0.5; cursor: default; }
+
+  footer {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    padding: 0 24px 22px;
+    letter-spacing: 0.02em;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bubble { animation: rise 0.25s ease; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="dossier">
+  <header>
+    <svg class="compass" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="18" stroke="#C9866B" stroke-width="1.2"/>
+      <circle cx="20" cy="20" r="1.6" fill="#1A1A1A"/>
+      <path d="M20 4 L23 20 L20 36 L17 20 Z" fill="#D4AF72" opacity="0.85"/>
+      <path d="M4 20 L20 17 L36 20 L20 23 Z" fill="#1A1A1A" opacity="0.15"/>
+    </svg>
+    <div class="eyebrow">Mission to Monetize™</div>
+    <h1>Digital MOS™</h1>
+    <p class="subhead">Answer a few questions. Get your income lane assignment — ALPHA, BRAVO, CHARLIE, or DELTA — based on your actual skills, time, and goals.</p>
+  </header>
+
+  <div id="log"></div>
+
+  <form id="composer">
+    <input type="text" id="input" placeholder="Type your answer…" autocomplete="off" />
+    <button type="submit" id="send">Send</button>
+  </form>
+
+  <footer>missiondrivendigital.org</footer>
+</div>
+
+<script>
+  // Point this at your deployed Cloudflare Worker URL (see SETUP-INSTRUCTIONS.md)
+  const WORKER_URL = "https://digital-mos-bot.dianaocasio53.workers.dev";
+
+  const log = document.getElementById('log');
+  const form = document.getElementById('composer');
+  const input = document.getElementById('input');
+  const sendBtn = document.getElementById('send');
+
+  let history = [];
+
+  function addBubble(text, role) {
+    const div = document.createElement('div');
+    const isAssignment = role === 'bot' && text.includes('Your Digital MOS:');
+    div.className = 'bubble ' + (isAssignment ? 'assignment' : role);
+    div.textContent = text;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function addTyping() {
+    const div = document.createElement('div');
+    div.className = 'typing';
+    div.id = 'typing-indicator';
+    div.textContent = 'Digital MOS Bot is typing…';
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  async function sendMessage(userText) {
+    history.push({ role: 'user', content: userText });
+    addBubble(userText, 'user');
+    input.value = '';
+    sendBtn.disabled = true;
+    addTyping();
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      });
+      const data = await res.json();
+      removeTyping();
+
+      if (!res.ok || data.error) {
+        addBubble("Comms are down on this end — try again in a moment.", 'bot');
+        console.error(data.error);
+        return;
+      }
+
+      history.push({ role: 'assistant', content: data.reply });
+      addBubble(data.reply, 'bot');
+    } catch (err) {
+      removeTyping();
+      addBubble("Comms are down on this end — try again in a moment.", 'bot');
+      console.error(err);
+    } finally {
+      sendBtn.disabled = false;
+      input.focus();
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    sendMessage(text);
+  });
+
+  // Kick things off with the bot's opening question
+  window.addEventListener('DOMContentLoaded', () => {
+    const opener = "Let's find your Digital MOS. First: what skills or experience do you have that you'd actually enjoy using in a business — military, civilian, hobbies, all of it counts?";
+    history.push({ role: 'assistant', content: opener });
+    addBubble(opener, 'bot');
+  });
+</script>
+
+</body>
+</html>
